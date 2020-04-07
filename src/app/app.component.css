@@ -4,10 +4,10 @@
   grid-template-rows: .5fr repeat(3, 1fr);
   grid-column-gap: 16px;
   grid-row-gap: 16px;
-  padding: 50px;
-  background-color: #f7ecc1;
+  padding: 20px;
+  background-color: lightgrey;
   border-radius: 10px;
-  border: solid black 1px;
+  /* border: solid black 1px; */
   justify-items: center;
   align-items: center;
   }
@@ -25,18 +25,55 @@
   .div11 { grid-area: 2 / 4 / 3 / 5; }
   .div12 { grid-area: 3 / 4 / 4 / 5; }
   .div13 { grid-area: 4 / 4 / 5 / 5; }
-
+  .div14 { grid-area: 1 / 2 / 2 / 6; }
+/*
 .parent > div {
   border: red dotted 1px;
+} */
+
+.div14 {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: grey;
+  color: white;
 }
 
-  .card-slot {
-    height: 175px;
-    width: 125px;
-    border: solid black 1px;
-    border-radius: 4%;
-    box-shadow: 2px 2px 8px black;
-    text-align: center;
-    vertical-align: middle;
-    background-color: white;
-  }
+.card-slot {
+  height: 175px;
+  width: 125px;
+  /* border: solid black 1px; */
+  border-radius: 4%;
+  box-shadow: 4px 4px 8px black;
+  text-align: center;
+  vertical-align: middle;
+  background-color: white;
+  display: grid;
+}
+
+.card-slot > img {
+  max-width: 120px;
+  align-self: center;
+  justify-self: center;
+}
+
+.card-slot > p {
+  font-size: 2.5em;
+  align-self: center;
+  justify-self: center;
+}
+
+.card-slot > .preview {
+  max-width: 40px;
+  justify-self: right;
+  border-radius: 10%;
+}
+
+button {
+  border: solid green 1px;
+  box-shadow: 0 0 4px black;
+  padding: 10px;
+  color: white;
+  background-color: lightgreen;
+  border-radius: 100%;
+}

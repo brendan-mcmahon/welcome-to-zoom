@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { GameService } from './game.service';
 import { GameCard } from './game-card/game-card.model';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faRedo } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,9 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 export class AppComponent {
   title = 'welcome-to';
 
-  faCoffee = faCoffee;
+  faCheck = faCheck;
+  faRedo = faRedo;
+
   columnOne: GameCard[];
   columnTwo: GameCard[];
 
@@ -26,7 +28,9 @@ export class AppComponent {
     this.gameService.deal();
     this.columnOne = this.gameService.numberCards;
     this.columnTwo = this.gameService.typeCards;
-    console.log(`${this.gameService.deck.length} cards remaining`);
+  }
 
+  goalAccomplished(index: number) {
+    console.log(`goal #${index} accomplished`);
   }
 }
