@@ -1,21 +1,23 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    Welcome to Your Perfect Home!
   </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
-<router-outlet></router-outlet>
+
+  <fa-icon [icon]="faCoffee"></fa-icon>
+
+<div class="parent">
+  <div class="card-slot div1"> <p>{{columnOne[0].number}}</p> </div>
+  <div class="card-slot div2"> <p>{{columnOne[1].number}}</p>  </div>
+  <div class="card-slot div3"> <p>{{columnOne[2].number}}</p>  </div>
+  <div class="card-slot div4"> <p>{{columnTwo[0].type}}</p>  </div>
+  <div class="card-slot div5"> <p>{{columnTwo[1].type}}</p>  </div>
+  <div class="card-slot div6"> <p>{{columnTwo[2].type}}</p>  </div>
+  <div class="card-slot div7"> </div>
+  <div class="card-slot div8"> </div>
+  <div class="card-slot div9"> </div>
+  <div class="div10"> <button (click)="flip()"></button> </div>
+  <div class="div11"> </div>
+  <div class="div12"> </div>
+  <div class="div13"> </div>
+</div>
