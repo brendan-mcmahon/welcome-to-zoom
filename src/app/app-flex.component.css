@@ -1,0 +1,42 @@
+.parent {
+  display: flex;
+  flex-direction: column;
+}
+
+.big-horizontal {
+  border: solid blue 1px;
+  width: 95vw;
+  height: 90vh;
+  display: flex;
+  justify-content: space-around;
+}
+
+.column {
+  border: solid black 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card {
+  border: solid darkred 1px;
+  height: 175px;
+  width: 125px;
+  display:flex;
+  flex-direction: column;
+  align-content: end;
+  justify-content: space-between;
+  font-size: 2.5em;
+}
+
+.preview {
+  max-width: 40px;
+  align-self: flex-end;
+  justify-self: right;
+  border-radius: 10%;
+  /* padding-right: 10px; */
+}
+
+.goal-card > img {
+  rotate: -90deg;
+}

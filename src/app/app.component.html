@@ -1,18 +1,24 @@
 <div style="text-align:center">
 
 <div class="parent">
-  <div class="card-slot div1"> <p>{{columnOne[0].number}}</p> <img class="preview" src='{{ "assets/" + columnOne[0].type + ".png" }}'> </div>
-  <div class="card-slot div2"> <p>{{columnOne[1].number}}</p> <img class="preview" src='{{ "assets/" + columnOne[1].type + ".png" }}'> </div>
-  <div class="card-slot div3"> <p>{{columnOne[2].number}}</p> <img class="preview" src='{{ "assets/" + columnOne[2].type + ".png" }}'> </div>
-  <div class="card-slot div4">  <img src='{{ "assets/" + columnTwo[0].type + ".png" }}'> </div>
-  <div class="card-slot div5"> <img src='{{ "assets/" + columnTwo[1].type + ".png" }}'>  </div>
-  <div class="card-slot div6"> <img src='{{ "assets/" + columnTwo[2].type + ".png" }}'>  </div>
-  <div class="card-slot div7"> </div>
-  <div class="card-slot div8"> </div>
-  <div class="card-slot div9"> </div>
+  <div class="card-slot div1"> <p>{{columnOne[0].number}}</p> <img class="preview" src='{{ "assets/icons/" + columnOne[0].type + ".png" }}'> </div>
+  <div class="card-slot div2"> <p>{{columnOne[1].number}}</p> <img class="preview" src='{{ "assets/icons/" + columnOne[1].type + ".png" }}'> </div>
+  <div class="card-slot div3"> <p>{{columnOne[2].number}}</p> <img class="preview" src='{{ "assets/icons/" + columnOne[2].type + ".png" }}'> </div>
+
+  <div class="card-slot div4">  <img src='{{ "assets/icons/" + columnTwo[0].type + ".png" }}'> </div>
+  <div class="card-slot div5"> <img src='{{ "assets/icons/" + columnTwo[1].type + ".png" }}'>  </div>
+  <div class="card-slot div6"> <img src='{{ "assets/icons/" + columnTwo[2].type + ".png" }}'>  </div>
+
+  <div *ngIf="goalCards[0].progress !== 'x'" class="goal-card card-slot div7"> <img src='{{ "assets/goal-cards/1-" + goalCards[0].index + goalCards[0].progress + ".png" }}'> </div>
+
+  <div *ngIf="goalCards[1].progress !== 'x'" class="goal-card card-slot div8"> <img src='{{ "assets/goal-cards/2-" + goalCards[1].index + goalCards[1].progress + ".png" }}'> </div>
+
+  <div *ngIf="goalCards[2].progress !== 'x'" class="goal-card card-slot div9"> <img src='{{ "assets/goal-cards/3-" + goalCards[2].index + goalCards[2].progress + ".png" }}'> </div>
+
   <div class="div10"> <button class="flip-button" (click)="flip()">  <fa-icon [icon]="faRedo"></fa-icon> </button> </div>
-  <div class="div11"> <button (click)="goalAccomplished(1)"><fa-icon [icon]="faCheck"></fa-icon></button>  </div>
-  <div class="div12"> <button (click)="goalAccomplished(2)"><fa-icon [icon]="faCheck"></fa-icon></button>  </div>
-  <div class="div13"> <button (click)="goalAccomplished(3)"><fa-icon [icon]="faCheck"></fa-icon></button>  </div>
+
+  <div class="div11"> <button (click)="goalAccomplished(0)"><fa-icon [icon]="faCheck"></fa-icon></button>  </div>
+  <div class="div12"> <button (click)="goalAccomplished(1)"><fa-icon [icon]="faCheck"></fa-icon></button>  </div>
+  <div class="div13"> <button (click)="goalAccomplished(2)"><fa-icon [icon]="faCheck"></fa-icon></button>  </div>
   <div class="div14"> <h1> Welcome to your Perfect Home! </h1></div>
 </div>

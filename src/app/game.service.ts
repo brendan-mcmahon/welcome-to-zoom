@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GameCard } from './game-card/game-card.model';
 import baseDeck from '../assets/cards.json';
+import { GoalCard } from './goal-card/goal-card.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,15 @@ export class GameService {
 
   numberCards: GameCard[];
   typeCards: GameCard[];
+  goals: GoalCard[];
 
   constructor() {
     this.shuffle();
+    this.dealGoals();
+  }
+
+  dealGoals() {
+    this.goals =  [this.drawGoalCard(), this.drawGoalCard(), this.drawGoalCard()]
   }
 
   deal() {
@@ -24,8 +31,14 @@ export class GameService {
     this.typeCards = this.numberCards;
 
     this.numberCards = [this.drawCard(), this.drawCard(), this.drawCard()];
+  }
 
-    // console.log(`${this.deck.length} cards remaining`);
+  drawGoalCard(): GoalCard {
+    const newGoal = new GoalCard();
+    newGoal.accomplishedCount = 0;
+    newGoal.index = Math.floor(Math.random() * 5) + 1;
+
+    return newGoal;
   }
 
   drawCard(): GameCard {
