@@ -1,0 +1,54 @@
+<div class="header">
+  <div class="title">
+    <h1>Welcome to {{neighborhoodName}}!</h1>
+  </div>
+  <div class="game-code-container">
+    <div class="body-font game-code-label">Game Code:</div> <div class="game-code">{{gameCode}}</div></div>
+  <div class="buttons">
+    <button class="red-button" (click)="strike()">I got a strike!</button>
+    <button class="green-button" (click)="iAmReady()">Ready to flip!</button>
+  </div>
+</div>
+
+<hr>
+
+<div class="body">
+  <div class="play-cards">
+   <div class="card-table">
+    <div>
+      <div class="card-slot"> <p>{{getNumber(0)}}</p> <img class="preview" src='{{getTypePath(table.left, 0)}}'> </div>
+      <div class="card-slot"> <p>{{getNumber(1)}}</p> <img class="preview" src='{{getTypePath(table.left, 1)}}'> </div>
+      <div class="card-slot"> <p>{{getNumber(2)}}</p> <img class="preview" src='{{getTypePath(table.left, 2)}}'> </div>
+    </div>
+
+    <div>
+      <div class="type-image card-slot">  <img src='{{getTypePath(table.right, 0)}}'> </div>
+      <div class="type-image card-slot"> <img src='{{getTypePath(table.right, 1)}}'>  </div>
+      <div class="type-image card-slot"> <img src='{{getTypePath(table.right, 2)}}'>  </div>
+    </div>
+  </div>
+
+    <div class="goal-cards">
+      <div class="card-slot">
+        <img src='{{ getGoalCardPath(0) }}'>
+        <button *ngIf="!accomplishedGoals[0]" class="green-button goal-button" (click)="goalAccomplished(0)">I got this one!</button>
+      </div>
+
+      <div class="card-slot">
+        <img src='{{ getGoalCardPath(1) }}'>
+        <button *ngIf="!accomplishedGoals[1]" class="green-button goal-button" (click)="goalAccomplished(1)">I got this one!</button>
+      </div>
+
+      <div class="card-slot">
+        <img src='{{ getGoalCardPath(2) }}'>
+        <button *ngIf="!accomplishedGoals[2]" class="green-button goal-button" (click)="goalAccomplished(2)">I got this one!</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="neighbors">
+    <app-neighbor class="neighbor" *ngFor="let neighbor of neighbors" [neighbor]="neighbor"></app-neighbor>
+  </div>
+
+</div>

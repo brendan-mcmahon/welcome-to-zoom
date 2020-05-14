@@ -1,0 +1,11 @@
+<div class="parent">
+  <div class="header">
+    <h3>{{neighbor.name}}</h3>
+    <div [ngClass]="{ 'light': true, 'green-light-on': neighbor.ready, 'green-light-off': !neighbor.ready }"></div>
+  </div>
+
+  <div class="strikes">
+    <div *ngFor="let strike of getStrikes()" class="small-light red-light-on"></div>
+    <div *ngFor="let strike of getEmptyStrikes()" class="small-light red-light-off"></div>
+  </div>
+</div>

@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: header;
+  /* src: url("/assets/fonts/AdvertisingScriptBold.ttf"); */
+  src: url("/assets/fonts/Cookie-Regular.ttf");
+}
+
+@font-face {
+  font-family: body;
+  /* src: url("/assets/fonts/AtomicAge-Regular.ttf"); */
+  /* src: url("/assets/fonts/CherryCreamSoda.ttf"); */
+  src: url("/assets/fonts/Cookie-Regular.ttf");
+}

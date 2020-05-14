@@ -49,11 +49,6 @@ export class GameService {
   }
 
   shuffle() {
-    console.log('shuffling...');
-    console.log(baseDeck.cards.length);
-
     this.deck  = Object.assign([], baseDeck.cards);
-
-    // this.deck = baseDeck.cards;
   }
 }

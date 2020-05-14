@@ -1,0 +1,17 @@
+
+<button (click)="showJoinDialog = true; showCreateDialog = false">Join Game</button>
+<button (click)="showJoinDialog = false; showCreateDialog = true">Create New Game</button>
+
+<div *ngIf="showJoinDialog">
+  <p>Neighborhood Name: </p><input [(ngModel)]="neighborhoodName" type="text" />
+  <p>Game Code: </p><input [(ngModel)]="gameCode" type="text" />
+
+  <button (click)="goToGame()">Go To Game</button>
+</div>
+
+
+<div *ngIf="showCreateDialog">
+  <p>Neighborhood Name: </p><input [(ngModel)]="neighborhoodName" type="text" />
+
+  <button (click)="createGame()">Go To Game</button>
+</div>

@@ -1,0 +1,56 @@
+.parent {
+  background: lightgray;
+  margin: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.strikes {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.light {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.small-light {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-left: 8px
+}
+
+.green-light-off {
+  background-color: darkgreen;
+}
+
+.green-light-on {
+  background-color: greenyellow;
+  border: yellowgreen 1px solid;
+}
+
+.red-light-off {
+  background-color: darkred;
+}
+
+.red-light-on {
+  background-color: red;
+  border: pink 1px solid;
+}
+
+h3 {
+  font-family: body;
+  font-size: 2em;
+  margin: 18px;
+}
