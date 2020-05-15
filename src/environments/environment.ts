@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  SOCKET_ENDPOINT: 'https://welcome-to-zoom-api.herokuapp.com/'
+  SOCKET_ENDPOINT: 'http://localhost:3000'
 };
 
 /*
