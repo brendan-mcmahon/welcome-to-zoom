@@ -16,11 +16,16 @@ export class NeighborComponent implements OnInit {
   }
 
   getStrikes() {
-    return Array.from(Array(this.neighbor.strikeCount), (x, i) => i);
+    if (this.neighbor.strikeCount < 3) {
+      return Array.from(Array(this.neighbor.strikeCount), (x, i) => i);
+    }
+    return [true, true, true];
   }
 
   getEmptyStrikes() {
-    return Array.from(Array(3 - this.neighbor.strikeCount), (x, i) => i);
+    if (this.neighbor.strikeCount < 3) {
+      return Array.from(Array(3 - this.neighbor.strikeCount), (x, i) => i);
+    }
   }
 
 }

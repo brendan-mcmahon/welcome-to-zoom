@@ -46,3 +46,10 @@ input {
   align-items: center;
   margin-top: 24px;
 }
+
+@media only screen and (max-width: 768px) {
+  .buttons {
+    height: 80vh;
+    justify-content: space-around;
+  }
+}

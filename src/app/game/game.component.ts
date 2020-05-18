@@ -67,8 +67,12 @@ export class GameComponent implements OnInit {
   }
 
   strike() {
-    this.socketService.strike(this.gameCode, this.neighborhoodName);
-    console.log('user got a strike!');
+    if (this.neighbors.filter(n => n.name === this.neighborhoodName)[0].strikeCount < 2) {
+      this.socketService.strike(this.gameCode, this.neighborhoodName);
+      console.log('user got a strike!');
+    } else {
+      console.log('game over!');
+    }
   }
 
   getNumber(index: number) {
