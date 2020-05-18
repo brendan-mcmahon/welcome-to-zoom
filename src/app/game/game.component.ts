@@ -50,15 +50,11 @@ export class GameComponent implements OnInit {
       }
     });
 
-    this.socketService.table.subscribe(d => {
-      console.log(d);
-      this.table = d;
-    });
+    this.socketService.table.subscribe(d => this.table = d );
   }
 
   iAmReady() {
     this.socketService.iAmReady(this.gameCode, this.neighborhoodName);
-    console.log('ready clicked');
   }
 
   goalAccomplished(index: number) {
@@ -69,10 +65,14 @@ export class GameComponent implements OnInit {
   strike() {
     if (this.neighbors.filter(n => n.name === this.neighborhoodName)[0].strikeCount < 2) {
       this.socketService.strike(this.gameCode, this.neighborhoodName);
-      console.log('user got a strike!');
     } else {
       console.log('game over!');
     }
+  }
+
+  leaveGame() {
+    this.socketService.leaveGame(this.gameCode, this.neighborhoodName);
+    this.router.navigate(['home']);
   }
 
   getNumber(index: number) {

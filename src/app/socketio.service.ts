@@ -10,7 +10,6 @@ import { GameInfo } from './game-info';
   providedIn: 'root'
 })
 export class SocketioService {
-
   socket: any;
   public gameInfo = new BehaviorSubject<GameInfo>(null);
   public neighbors = new BehaviorSubject<Neighbor[]>([]);
@@ -29,17 +28,13 @@ export class SocketioService {
     });
 
     this.socket.on('game-confirmation', (data: any) => {
-      console.log('confirmed join/create');
       this.connected.next(true);
       this.gameInfo.next(data);
     });
 
-    this.socket.on('game-state', (data: any) => {
-      console.log(`game-state update: ${data}`);
-      this.table.next(data);
-    });
+    this.socket.on('game-state', (data: any) => this.table.next(data));
 
-    this.socket.on('user-update', (data: any) => { this.neighbors.next(data); });
+    this.socket.on('user-update', (data: any) => this.neighbors.next(data));
   }
 
   createRoom(roomName: string, neighborhoodName: string) {
@@ -60,6 +55,11 @@ export class SocketioService {
 
   goalAccomplished(index: number) {
     this.socket.emit('goal-accomplished', index);
+  }
+
+  leaveGame(roomName: string, neighborhoodName: string) {
+    this.socket.emit('leave', roomName, neighborhoodName);
+    this.connected.next(false);
   }
 
 }

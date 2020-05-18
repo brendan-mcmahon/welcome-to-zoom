@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
     this.socketService.errors.subscribe(e => {
       if (e) {
         alert(`Error: ${e}`);
+        this.socketService.errors.next(null);
       }
     });
 
