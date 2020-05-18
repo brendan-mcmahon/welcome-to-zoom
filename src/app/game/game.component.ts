@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GameCard } from '../game-card/game-card.model';
 import { faCheck, faRedo } from '@fortawesome/free-solid-svg-icons';
-import { GoalCard } from '../goal-card/goal-card.model';
 import { GameService } from '../game.service';
 import { SocketioService } from '../socketio.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Neighbor } from '../neighbor';
 import { Table } from '../table';
 
@@ -24,29 +23,37 @@ export class GameComponent implements OnInit {
   table: Table;
   neighbors: Neighbor[];
 
-  constructor(private gameService: GameService, private route: ActivatedRoute, private socketService: SocketioService) {
+  constructor(
+    private gameService: GameService,
+    private route: ActivatedRoute,
+    private socketService: SocketioService,
+    private router: Router) {
   }
 
   ngOnInit() {
     this.socketService.setupSocketConnection();
 
-    this.neighborhoodName = this.route.snapshot.paramMap.get('neighborhoodName');
-    this.gameCode = this.route.snapshot.paramMap.get('gameCode');
+    this.socketService.gameInfo.subscribe(gi => {
+      if (gi) {
+        this.gameCode = gi.gameCode;
+        this.neighborhoodName = gi.neighborhoodName;
+      } else {
+        this.router.navigate(['/']);
+      }
+    });
 
-    this.socketService.neighbors.subscribe(n => { this.neighbors = n; });
+    this.socketService.neighbors.subscribe(n => {
+      if (n) {
+        this.neighbors = n;
+      } else {
+        this.router.navigate(['/']);
+      }
+    });
 
     this.socketService.table.subscribe(d => {
       console.log(d);
       this.table = d;
     });
-
-    if (this.gameCode) {
-      this.socketService.joinRoom(this.gameCode, this.neighborhoodName);
-    }
-    if (!this.gameCode) {
-      this.gameCode = Math.random().toString(36).substring(2, 6).toUpperCase();
-      this.socketService.createRoom(this.gameCode, this.neighborhoodName);
-    }
   }
 
   iAmReady() {

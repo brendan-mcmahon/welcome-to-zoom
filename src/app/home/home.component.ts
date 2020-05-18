@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SocketioService } from '../socketio.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private socketService: SocketioService) { }
 
   gameCode: string;
   neighborhoodName: string;
@@ -16,14 +17,24 @@ export class HomeComponent implements OnInit {
   showCreateDialog = false;
 
   ngOnInit(): void {
+    this.socketService.setupSocketConnection();
+
+    this.socketService.errors.subscribe(e => {
+      if (e) {
+        alert(`Error: ${e}`);
+      }
+    });
+
+    this.socketService.connected.subscribe(c => { if (c) { this.router.navigate(['/game']); }});
   }
 
   createGame() {
-    this.router.navigate([`/game/${this.neighborhoodName}`]);
+    this.gameCode = Math.random().toString(36).substring(2, 6).toUpperCase();
+    this.socketService.createRoom(this.gameCode, this.neighborhoodName);
   }
 
   goToGame() {
-    this.router.navigate([`/game/${this.neighborhoodName}/${this.gameCode}`]);
+    this.socketService.joinRoom(this.gameCode, this.neighborhoodName);
   }
 
 }

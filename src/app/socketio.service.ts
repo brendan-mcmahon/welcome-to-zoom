@@ -4,21 +4,35 @@ import { environment } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
 import { Neighbor } from './neighbor';
 import { Table } from './table';
+import { GameInfo } from './game-info';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SocketioService {
 
-
   socket: any;
+  public gameInfo = new BehaviorSubject<GameInfo>(null);
   public neighbors = new BehaviorSubject<Neighbor[]>([]);
   public table = new BehaviorSubject<Table>(new Table());
+  public errors = new BehaviorSubject<string>(null);
+  public connected = new BehaviorSubject<boolean>(false);
 
   constructor() { }
 
   setupSocketConnection() {
     this.socket = io(environment.SOCKET_ENDPOINT);
+
+    this.socket.on('error', (data: any) => {
+      console.log(`Error: ${data}`);
+      this.errors.next(data);
+    });
+
+    this.socket.on('game-confirmation', (data: any) => {
+      console.log('confirmed join/create');
+      this.connected.next(true);
+      this.gameInfo.next(data);
+    });
 
     this.socket.on('game-state', (data: any) => {
       console.log(`game-state update: ${data}`);
