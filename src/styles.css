@@ -11,3 +11,25 @@
   /* src: url("/assets/fonts/CherryCreamSoda.ttf"); */
   src: url("/assets/fonts/Cookie-Regular.ttf");
 }
+
+.green {
+  background-color: #459415;
+  color: white;
+}
+
+.red {
+  background-color: #c70808;
+  color: white;
+}
+
+.blue {
+  background-color: #349beb;
+  color: white;
+}
+
+.big-button {
+  font-size: 1.5em !important;
+  padding: 12px;
+  margin-left: 12px;
+  border: none;
+}

@@ -1,17 +1,27 @@
+<div *ngIf="!showJoinDialog && !showCreateDialog" class="buttons">
+  <button class="big-button blue" (click)="showJoinDialog = true; showCreateDialog = false">Join Game</button>
+  <button class="big-button blue" (click)="showJoinDialog = false; showCreateDialog = true">Create New Game</button>
+</div>
 
-<button (click)="showJoinDialog = true; showCreateDialog = false">Join Game</button>
-<button (click)="showJoinDialog = false; showCreateDialog = true">Create New Game</button>
+<div class="dialog" *ngIf="showJoinDialog">
+  <p>Give your Neighborhood a name! </p>
+  <input [(ngModel)]="neighborhoodName" type="text" />
+  <p>Game Code:</p>
+  <input [(ngModel)]="gameCode" type="text" />
 
-<div *ngIf="showJoinDialog">
-  <p>Neighborhood Name: </p><input [(ngModel)]="neighborhoodName" type="text" />
-  <p>Game Code: </p><input [(ngModel)]="gameCode" type="text" />
-
-  <button (click)="goToGame()">Go To Game</button>
+  <div class="dialog-buttons">
+    <button class="big-button red" (click)="showJoinDialog = false">Cancel</button>
+    <button class="big-button green" (click)="goToGame()">Go To Game</button>
+  </div>
 </div>
 
 
-<div *ngIf="showCreateDialog">
-  <p>Neighborhood Name: </p><input [(ngModel)]="neighborhoodName" type="text" />
+<div class="dialog" *ngIf="showCreateDialog">
+  <p>Give your Neighborhood a name!</p>
+  <input [(ngModel)]="neighborhoodName" type="text" />
 
-  <button (click)="createGame()">Go To Game</button>
+  <div class="dialog-buttons">
+    <button class="big-button red" (click)="showCreateDialog = false">Cancel</button>
+    <button class="big-button green" (click)="createGame()">Go To Game</button>
+  </div>
 </div>
