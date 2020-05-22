@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
   showCreateDialog = false;
 
   ngOnInit(): void {
-    this.socketService.setupSocketConnection();
 
     this.socketService.errors.subscribe(e => {
       if (e) {

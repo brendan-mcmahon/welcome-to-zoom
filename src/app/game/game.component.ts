@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GameCard } from '../game-card/game-card.model';
 import { faCheck, faRedo } from '@fortawesome/free-solid-svg-icons';
 import { GameService } from '../game.service';
@@ -12,7 +12,7 @@ import { Table } from '../table';
   templateUrl: './game.component.html',
   styleUrls: ['./game-flex.component.css']
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, OnDestroy {
 
   gameCode: string;
   neighborhoodName: string;
@@ -31,8 +31,6 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.socketService.setupSocketConnection();
-
     this.socketService.gameInfo.subscribe(gi => {
       if (gi) {
         this.gameCode = gi.gameCode;
@@ -53,6 +51,10 @@ export class GameComponent implements OnInit {
     this.socketService.table.subscribe(d => this.table = d );
   }
 
+  ngOnDestroy() {
+    this.socketService.leaveGame(this.neighborhoodName);
+  }
+
   iAmReady() {
     this.socketService.iAmReady(this.gameCode, this.neighborhoodName);
   }
@@ -71,7 +73,7 @@ export class GameComponent implements OnInit {
   }
 
   leaveGame() {
-    this.socketService.leaveGame(this.gameCode, this.neighborhoodName);
+    this.socketService.leaveGame(this.neighborhoodName);
     this.router.navigate(['home']);
   }
 
@@ -89,6 +91,7 @@ export class GameComponent implements OnInit {
 
   getGoalCardPath(row: number) {
     if (!this.table.goals || !this.table.goals[row]) { return 'assets/icons/QuestionMark.png'; }
+    if (this.table.goals[row].progress === 'x') { return 'assets/icons/red-x.png'; }
     return `assets/goal-cards/${row + 1}-${this.table.goals[row].index}${this.table.goals[row].progress}.png`;
   }
 }

@@ -57,8 +57,8 @@ export class SocketioService {
     this.socket.emit('goal-accomplished', index);
   }
 
-  leaveGame(roomName: string, neighborhoodName: string) {
-    this.socket.emit('leave', roomName, neighborhoodName);
+  leaveGame(neighborhoodName: string) {
+    this.socket.emit('leave', neighborhoodName);
     this.connected.next(false);
   }
 
