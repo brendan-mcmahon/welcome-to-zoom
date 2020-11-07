@@ -4,24 +4,27 @@
 </div>
 
 <div class="dialog" *ngIf="showJoinDialog">
-  <p>Give your neighborhood a name! </p>
+  <!-- <p>Give your neighborhood a name! </p> -->
+  <div class="neighborhood-name"></div>
   <input [(ngModel)]="neighborhoodName" type="text" />
-  <p>Game Code:</p>
+  <!-- <p>Game Code:</p> -->
+  <div class="game-code"></div>
   <input [(ngModel)]="gameCode" type="text" />
 
   <div class="dialog-buttons">
-    <button class="big-button green" (click)="goToGame()">Start</button>
-    <button class="big-button red" (click)="showJoinDialog = false">Cancel</button>
+    <button class="start-button" (click)="goToGame()"></button>
+    <button class="cancel-button" (click)="showJoinDialog = false"></button>
   </div>
 </div>
 
 
 <div class="dialog" *ngIf="showCreateDialog">
-  <p>Give your neighborhood a name!</p>
+  <!-- <p>Give your neighborhood a name!</p> -->
+  <div class="neighborhood-name"></div>
   <input [(ngModel)]="neighborhoodName" type="text" />
 
   <div class="dialog-buttons">
-    <button class="big-button green" (click)="createGame()">Start</button>
-    <button class="big-button red" (click)="showCreateDialog = false">Cancel</button>
+    <button class="start-button" (click)="createGame()">Start</button>
+    <button class="cancel-button" (click)="showCreateDialog = false"></button>
   </div>
 </div>
