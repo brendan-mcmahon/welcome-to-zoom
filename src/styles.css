@@ -8,28 +8,63 @@
 @font-face {
   font-family: body;
   /* src: url("/assets/fonts/AtomicAge-Regular.ttf"); */
-  /* src: url("/assets/fonts/CherryCreamSoda.ttf"); */
-  src: url("/assets/fonts/Cookie-Regular.ttf");
+  src: url("/assets/fonts/CherryCreamSoda.ttf");
+  /* src: url("/assets/fonts/Cookie-Regular.ttf"); */
+}
+
+/* --light-goldenrod-yellow: #f3f3cdff;
+--eton-blue: #87cca7ff;
+--paradise-pink: #e4476dff;
+--turquoise-green: #9ed7bbff;
+--popstar: #bc5362ff;
+--blue-sapphire: #086788ff; */
+
+body {
+  background-color: #f3f3cd;
+  background-color: #9ed7bbff;
+  background-image:
+      linear-gradient(45deg, #87cca7 25%, transparent 25%),
+      linear-gradient(135deg, #87cca7 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #87cca7 75%),
+      linear-gradient(135deg, transparent 75%, #87cca7 75%);
+    background-size:175px 175px; /* Must be a square */
+    background-position:0 0, 87.5px 0, 87.5px -87.5px, 0px 87.5px; /* Must be half of one side of the square */
 }
 
 .green {
-  background-color: #459415;
+  background-color: #9ed7bbff;
+  border: solid 2px #AEAE70;
   color: white;
+
+  background-color: #f3f3cd;
+  color: #e4476d
 }
 
 .red {
-  background-color: #c70808;
+  background-color: #e4476d;
+  border: solid 2px #bc5362ff;
   color: white;
+
+  background-color: #e4476d;
+  color: #f3f3cd
 }
 
 .blue {
-  background-color: #349beb;
+  background-color: #1E7593;
+  border: solid 2px #086788;
   color: white;
 }
 
 .big-button {
-  font-size: 1.5em !important;
-  padding: 12px;
-  margin-left: 12px;
+  font-size: 1.25em !important;
+  padding: 16px;
+  /* margin-left: 12px; */
+  margin: 6px;
+  /* border: none; */
+  border-radius: 8px;
+  zoom: 75%;
+  height: 100%;
+  width: 100%;
   border: none;
+  box-shadow: none;
 }

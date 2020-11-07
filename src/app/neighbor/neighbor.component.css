@@ -1,9 +1,16 @@
 .parent {
   background: lightgray;
+  background-color: #f3f3cd;
   margin: 12px;
   padding-left: 16px;
   padding-right: 16px;
   padding-bottom: 16px;
+  border-radius: 8px;
+  border: solid 2px #AEAE70;
+}
+
+.me {
+
 }
 
 .header {

@@ -3,6 +3,18 @@ button, p {
   font-size: 2em;
 }
 
+#new-game-button {
+  background: url('../../assets/buttons/new-game-button-shadow.svg') no-repeat center;
+  height: 100%;
+  width: 100%;
+}
+
+#join-game-button {
+  background: url('../../assets/buttons/join-game-button-shadow.svg') no-repeat center;
+  height: 100%;
+  width: 100%;
+}
+
 p {
   margin-bottom: .25em;
 }
@@ -15,15 +27,16 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 90vh;
 }
 
 .buttons > button {
   margin: 24px;
   padding: 12px;
-
-  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.33);
+  border: none;
+  text-shadow: 0px 0px 5px 1px rgba(0,0,0,0.33);
 }
-
+/*
 .buttons > button:hover {
   transform: translateY(-3px);
   box-shadow: 0px 3px 5px 1px rgba(0,0,0,0.33);
@@ -32,12 +45,16 @@ input {
 .buttons > button:active {
   transform: translateY(2px);
   box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.33);
-}
+} */
 
 .dialog {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.dialog > p {
+  margin: 16px 32px;
 }
 
 .dialog-buttons {
@@ -48,8 +65,8 @@ input {
 }
 
 @media only screen and (max-width: 768px) {
-  .buttons {
+  /* .buttons {
     height: 80vh;
     justify-content: space-around;
-  }
+  } */
 }

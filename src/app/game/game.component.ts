@@ -19,11 +19,13 @@ export class GameComponent implements OnInit, OnDestroy {
   faCheck = faCheck;
   faRedo = faRedo;
   accomplishedGoals = [false, false, false];
+  stricken = false;
+  ready = false;
 
   table: Table;
   neighbors: Neighbor[];
 
-  constructor(
+  constructor (
     private gameService: GameService,
     private route: ActivatedRoute,
     private socketService: SocketioService,
@@ -48,7 +50,11 @@ export class GameComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.socketService.table.subscribe(d => this.table = d );
+    this.socketService.table.subscribe(d => {
+      this.stricken = false;
+      this.ready = false;
+      this.table = d;
+    });
   }
 
   ngOnDestroy() {
@@ -57,6 +63,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
   iAmReady() {
     this.socketService.iAmReady(this.gameCode, this.neighborhoodName);
+    this.ready = true;
   }
 
   goalAccomplished(index: number) {
@@ -67,9 +74,24 @@ export class GameComponent implements OnInit, OnDestroy {
   strike() {
     if (this.neighbors.filter(n => n.name === this.neighborhoodName)[0].strikeCount < 2) {
       this.socketService.strike(this.gameCode, this.neighborhoodName);
+      console.log('strike');
+      this.stricken = true;
     } else {
       console.log('game over!');
     }
+  }
+
+  unStrike() {
+    if (this.neighbors.filter(n => n.name === this.neighborhoodName)[0].strikeCount > 0) {
+      this.socketService.undoStrike(this.gameCode, this.neighborhoodName);
+      console.log('undoing strike');
+      this.stricken = false;
+    }
+  }
+
+  unReady() {
+    this.socketService.undoReady(this.gameCode, this.neighborhoodName);
+    this.ready = false;
   }
 
   leaveGame() {

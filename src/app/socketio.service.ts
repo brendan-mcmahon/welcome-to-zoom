@@ -49,8 +49,16 @@ export class SocketioService {
     this.socket.emit('ready', roomName, neighborhoodName);
   }
 
+  undoReady(roomName: string, neighborhoodName: string) {
+    this.socket.emit('undo-ready', roomName, neighborhoodName);
+  }
   strike(roomName: string, neighborhoodName: string) {
     this.socket.emit('strike', roomName, neighborhoodName);
+  }
+
+  undoStrike(roomName: string, neighborhoodName: string) {
+    console.log('undoing strike');
+    this.socket.emit('undo-strike', roomName, neighborhoodName);
   }
 
   goalAccomplished(index: number) {
