@@ -1,15 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @font-face {
   font-family: header;
-  /* src: url("/assets/fonts/AdvertisingScriptBold.ttf"); */
-  src: url("/assets/fonts/Cookie-Regular.ttf");
+  src: url('./assets/fonts/SuezOne-Regular.ttf');
 }
 
 @font-face {
   font-family: body;
-  /* src: url("/assets/fonts/AtomicAge-Regular.ttf"); */
   src: url("/assets/fonts/CherryCreamSoda.ttf");
-  /* src: url("/assets/fonts/Cookie-Regular.ttf"); */
+  src: url('./assets/fonts/SuezOne-Regular.ttf');
 }
 
 /* --light-goldenrod-yellow: #f3f3cdff;
@@ -32,39 +30,116 @@ body {
 }
 
 .green {
+  background-color: #f3f3cd;
+  color: #e4476d
+}
+
+.other-green {
   background-color: #9ed7bbff;
   border: solid 2px #AEAE70;
   color: white;
-
-  background-color: #f3f3cd;
-  color: #e4476d
 }
 
 .red {
   background-color: #e4476d;
   border: solid 2px #bc5362ff;
-  color: white;
 
-  background-color: #e4476d;
   color: #f3f3cd
 }
 
 .blue {
   background-color: #1E7593;
-  border: solid 2px #086788;
+  background-color: #7ED3D1;
+  border: solid 2px #3EB6B4;
   color: white;
 }
 
 .big-button {
-  font-size: 1.25em !important;
-  padding: 16px;
-  /* margin-left: 12px; */
-  margin: 6px;
-  /* border: none; */
-  border-radius: 8px;
-  zoom: 75%;
+  font-family: body;
+  height: 100%;
+  width: 100%;
+  background-size: 100%;
+  font-size: 2.5em;
+  border: none;
+}
+
+.big-button-primary {
+  background: url('./assets/buttons/big-button-primary-shadow.svg') no-repeat center;
+  color: #f3f3cd;
+  padding-top: 20px;
+  background-size: 100%;
+  margin: 24px;
+  padding: 12px;
+}
+
+.big-button-primary:active {
+  background: url('./assets/buttons/big-button-primary.svg') no-repeat center;
+  color: #f3f3cd;
+  padding-top: 20px;
+  background-size: 100%;
+  margin: 24px;
+  padding: 12px;
+  transform: translateY(-3px);
+}
+
+.big-button-secondary {
+  background: url('./assets/buttons/big-button-secondary-shadow.svg') no-repeat center;
+  height: 100%;
+  width: 100%;
+  color: #e4476dff;
+  padding-top: 15px;
+  background-size: 100%;
+  font-size: 2.5em;
+}
+
+.big-button-secondary:active {
+  background: url('./assets/buttons/big-button-secondary.svg') no-repeat center;
   height: 100%;
   width: 100%;
   border: none;
-  box-shadow: none;
+  color: #e4476dff;
+  padding-top: 15px;
+  background-size: 100%;
+  font-size: 2.5em;
+}
+
+.small-button {
+  font-family: body;
+  height: 90px;
+  width: 150px;
+  outline: none;
+  border: none;
+  font-size: 1.6em;
+}
+
+.small-button-primary {
+  background: url('./assets/buttons/small-button-primary-shadow.svg') no-repeat center;
+  background-size: 150px;
+  color: #e4476dff;
+  padding-left: 13px;
+  padding-bottom:4px;
+}
+
+.small-button-primary:active {
+  background: url('./assets/buttons/small-button-primary.svg') no-repeat center;
+  background-size: 150px;
+  color: #e4476dff;
+  padding-left: 13px;
+  padding-bottom:4px;
+}
+
+.small-button-secondary {
+  background: url('./assets/buttons/small-button-secondary-shadow.svg') no-repeat center;
+  background-size: 200px;
+  color: #f3f3cd;
+  padding-left: 10px;
+  padding-bottom: 8px;
+}
+
+.small-button-secondary:active {
+  background: url('./assets/buttons/small-button-secondary.svg') no-repeat center;
+  background-size: 200px;
+  color: #f3f3cd;
+  padding-left: 10px;
+  padding-bottom: 8px;
 }

@@ -1,6 +1,6 @@
 <div *ngIf="!showJoinDialog && !showCreateDialog" class="buttons">
-  <button id="new-game-button" (click)="showJoinDialog = false; showCreateDialog = true"></button>
-  <button id="join-game-button" (click)="showJoinDialog = true; showCreateDialog = false"></button>
+  <button class="big-button big-button-primary" (click)="showJoinDialog = false; showCreateDialog = true">NEW GAME</button>
+  <button class="big-button big-button-secondary" (click)="showJoinDialog = true; showCreateDialog = false">JOIN GAME</button>
 </div>
 
 <div class="dialog" *ngIf="showJoinDialog">
@@ -12,8 +12,8 @@
   <input [(ngModel)]="gameCode" type="text" />
 
   <div class="dialog-buttons">
-    <button class="start-button" (click)="goToGame()"></button>
-    <button class="cancel-button" (click)="showJoinDialog = false"></button>
+    <button class="small-button small-button-primary" (click)="goToGame()">START</button>
+    <button class="small-button small-button-secondary" (click)="showJoinDialog = false">CANCEL</button>
   </div>
 </div>
 
@@ -24,7 +24,7 @@
   <input [(ngModel)]="neighborhoodName" type="text" />
 
   <div class="dialog-buttons">
-    <button class="start-button" (click)="createGame()"></button>
-    <button class="cancel-button" (click)="showCreateDialog = false"></button>
+    <button class="small-button small-button-primary" (click)="createGame()">START</button>
+    <button class="small-button small-button-secondary" (click)="showCreateDialog = false">CANCEL</button>
   </div>
 </div>

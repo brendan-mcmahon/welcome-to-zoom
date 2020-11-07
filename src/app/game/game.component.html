@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header red">
   <div class="title">
     <h1>Welcome to {{neighborhoodName}}!</h1>
   </div>
@@ -48,12 +48,12 @@
 
 </div>
 
-<div class="buttons-container">
+<div class="buttons-container blue">
   <div class="buttons">
-    <button *ngIf="!ready" class="big-button green" (click)="iAmReady()">Ready!</button>
-    <button *ngIf="ready" class="big-button green" (click)="unReady()">Not Ready!</button>
-    <button *ngIf="!stricken" class="big-button red" (click)="strike()">Strike!</button>
-    <button *ngIf="stricken" class="big-button red" (click)="unStrike()">Undo!</button>
+    <button *ngIf="!ready" class="small-button small-button-primary" (click)="iAmReady()">Ready!</button>
+    <button *ngIf="ready" class="small-button small-button-primary" (click)="unReady()">Not Ready!</button>
+    <button *ngIf="!stricken" class="small-button small-button-secondary" (click)="strike()">Strike!</button>
+    <button *ngIf="stricken" class="small-button small-button-secondary" (click)="unStrike()">Undo!</button>
     <!-- <button class="big-button blue" (click)="leaveGame()">Leave</button> -->
   </div>
 </div>
