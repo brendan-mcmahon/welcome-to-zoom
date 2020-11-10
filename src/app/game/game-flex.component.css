@@ -106,7 +106,7 @@ p {
   align-self: center;
   justify-self: center;
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: -10px;
 }
 
 .card-slot {
@@ -189,9 +189,9 @@ p {
   }
 
   .card-slot {
-    height: 188px;
-    width: 134px;
-    font-size: 2em;
+    height: 160px;
+    width: 114px;
+    font-size: 1.8em;
     margin: 5px;
   }
 

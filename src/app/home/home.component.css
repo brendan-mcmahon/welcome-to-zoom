@@ -2,15 +2,14 @@
   background: url('../../assets/dialogs/give-your-neighborhood-a-name.svg') no-repeat center;
   height: 34%;
   width: 100vw;
-  background-size: 126vw;
+  background-size: 85% 85%;
 }
 
 .game-code {
   background: url('../../assets/dialogs/enter-your-game-code.svg') no-repeat center;
   height: 34%;
   width: 100vw;
-  background-size: 126vw;
-  margin-left: 50px;
+  background-size: 85% 85%;
 }
 
 p {

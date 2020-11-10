@@ -1,13 +1,11 @@
 <div *ngIf="!showJoinDialog && !showCreateDialog" class="buttons">
-  <button class="big-button big-button-primary" (click)="showJoinDialog = false; showCreateDialog = true">NEW GAME</button>
-  <button class="big-button big-button-secondary" (click)="showJoinDialog = true; showCreateDialog = false">JOIN GAME</button>
+  <button class="big-button big-button-primary" (click)="toggleCreateDialog()">NEW GAME</button>
+  <button class="big-button big-button-secondary" (click)="toggleJoinDialog()">JOIN GAME</button>
 </div>
 
 <div class="dialog" *ngIf="showJoinDialog">
-  <!-- <p>Give your neighborhood a name! </p> -->
   <div class="neighborhood-name"></div>
   <input [(ngModel)]="neighborhoodName" type="text" />
-  <!-- <p>Game Code:</p> -->
   <div class="game-code"></div>
   <input [(ngModel)]="gameCode" type="text" />
 
@@ -17,9 +15,7 @@
   </div>
 </div>
 
-
 <div class="dialog" *ngIf="showCreateDialog">
-  <!-- <p>Give your neighborhood a name!</p> -->
   <div class="neighborhood-name"></div>
   <input [(ngModel)]="neighborhoodName" type="text" />
 

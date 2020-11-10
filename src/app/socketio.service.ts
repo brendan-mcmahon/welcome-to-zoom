@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Neighbor } from './neighbor';
 import { Table } from './table';
 import { GameInfo } from './game-info';
@@ -16,6 +16,8 @@ export class SocketioService {
   public table = new BehaviorSubject<Table>(new Table());
   public errors = new BehaviorSubject<string>(null);
   public connected = new BehaviorSubject<boolean>(false);
+  public strikeSound = new Subject();
+  public goalSound = new Subject();
 
   constructor() { }
 
@@ -35,6 +37,10 @@ export class SocketioService {
     this.socket.on('game-state', (data: any) => this.table.next(data));
 
     this.socket.on('user-update', (data: any) => this.neighbors.next(data));
+
+    this.socket.on('strike-update', (_: any) => this.strikeSound.next());
+
+    this.socket.on('goal-update', (_: any) => this.goalSound.next());
   }
 
   createRoom(roomName: string, neighborhoodName: string) {
@@ -61,8 +67,9 @@ export class SocketioService {
     this.socket.emit('undo-strike', roomName, neighborhoodName);
   }
 
-  goalAccomplished(index: number) {
-    this.socket.emit('goal-accomplished', index);
+  goalAccomplished(roomName: string, index: number) {
+    console.log(`got goal ${roomName}, ${index}`);
+    this.socket.emit('goal-accomplished', roomName, index);
   }
 
   leaveGame(neighborhoodName: string) {

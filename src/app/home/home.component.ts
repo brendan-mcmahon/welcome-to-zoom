@@ -23,12 +23,25 @@ export class HomeComponent implements OnInit {
         alert(`Error: ${e}`);
         this.socketService.errors.next(null);
       }
+      console.log('subscribed');
     });
 
     this.socketService.connected.subscribe(c => { if (c) { this.router.navigate(['/game']); }});
   }
 
+  toggleCreateDialog() {
+    console.log('button clicked');
+    this.showJoinDialog = false;
+    this.showCreateDialog = true;
+  }
+
+  toggleJoinDialog() {
+    this.showJoinDialog = true;
+    this.showCreateDialog = false;
+  }
+
   createGame() {
+    console.log('created game');
     this.gameCode = Math.random().toString(36).substring(2, 6).toUpperCase();
     this.socketService.createRoom(this.gameCode, this.neighborhoodName);
   }

@@ -6,6 +6,7 @@ import { SocketioService } from '../socketio.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Neighbor } from '../neighbor';
 import { Table } from '../table';
+import { Howl, Howler } from 'howler';
 
 @Component({
   selector: 'app-game',
@@ -29,14 +30,14 @@ export class GameComponent implements OnInit, OnDestroy {
     private gameService: GameService,
     private route: ActivatedRoute,
     private socketService: SocketioService,
-    private router: Router) {
-  }
+    private router: Router) { }
 
   ngOnInit() {
     this.socketService.gameInfo.subscribe(gi => {
       if (gi) {
         this.gameCode = gi.gameCode;
         this.neighborhoodName = gi.neighborhoodName;
+
       } else {
         this.router.navigate(['/']);
       }
@@ -50,11 +51,27 @@ export class GameComponent implements OnInit, OnDestroy {
       }
     });
 
+    const flipSound = new Howl({
+      src: ['../../assets/sounds/flip.wav']
+    });
+    const strikeSound = new Howl({
+      src: ['../../assets/sounds/error.wav']
+    });
+    const goalSound = new Howl({
+      src: ['../../assets/sounds/success.wav']
+    });
+
     this.socketService.table.subscribe(d => {
       this.stricken = false;
       this.ready = false;
       this.table = d;
+
+      flipSound.play();
     });
+
+    this.socketService.strikeSound.subscribe(s => strikeSound.play());
+
+    this.socketService.goalSound.subscribe(s => goalSound.play());
   }
 
   ngOnDestroy() {
@@ -68,7 +85,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
   goalAccomplished(index: number) {
     this.accomplishedGoals[index] = true;
-    this.socketService.goalAccomplished(index);
+    this.socketService.goalAccomplished(this.gameCode, index);
   }
 
   strike() {

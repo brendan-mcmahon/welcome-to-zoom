@@ -31,6 +31,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "core-js": "^2.5.4",
     "express": "^4.17.1",
+    "howler": "^2.2.1",
     "path": "^0.12.7",
     "rxjs": "~6.5.5",
     "socket.io-client": "^2.3.0",

@@ -58,7 +58,7 @@ body {
   font-family: body;
   height: 100%;
   width: 100%;
-  background-size: 100%;
+  background-size: 100% 100%;
   font-size: 2.5em;
   border: none;
 }
@@ -67,7 +67,7 @@ body {
   background: url('./assets/buttons/big-button-primary-shadow.svg') no-repeat center;
   color: #f3f3cd;
   padding-top: 20px;
-  background-size: 100%;
+  background-size: 100% 100%;
   margin: 24px;
   padding: 12px;
 }
@@ -76,7 +76,7 @@ body {
   background: url('./assets/buttons/big-button-primary.svg') no-repeat center;
   color: #f3f3cd;
   padding-top: 20px;
-  background-size: 100%;
+  background-size: 100% 100%;
   margin: 24px;
   padding: 12px;
   transform: translateY(-3px);
@@ -88,7 +88,7 @@ body {
   width: 100%;
   color: #e4476dff;
   padding-top: 15px;
-  background-size: 100%;
+  background-size: 100% 100%;
   font-size: 2.5em;
 }
 
@@ -99,7 +99,7 @@ body {
   border: none;
   color: #e4476dff;
   padding-top: 15px;
-  background-size: 100%;
+  background-size: 100% 100%;
   font-size: 2.5em;
 }
 
