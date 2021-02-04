@@ -1,0 +1,112 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.strikes {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.light {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.small-light {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+}
+
+.green-light-off {
+  background-color: darkgreen;
+}
+
+.green-light-on {
+  background-color: greenyellow;
+  border: yellowgreen 1px solid;
+}
+
+.red-light-off {
+  background-color: darkred;
+}
+
+.red-light-on {
+  background-color: red;
+  border: pink 1px solid;
+}
+
+h3 {
+  font-family: body;
+  font-size: 1.25em;
+  margin: 18px;
+  margin-left: 0px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.25fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "name name name . ready-light"
+    "goals goals goals . strikes";
+  background: lightgray;
+  background-color: #f3f3cd;
+  margin: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  border-radius: 8px;
+  border: solid 2px #aeae70;
+}
+
+.name {
+  grid-area: name;
+}
+
+.ready-light {
+  grid-area: ready-light;
+  align-self: center;
+  justify-self: end;
+}
+
+.goals {
+  grid-area: goals;
+  display: flex;
+  justify-content: space-between;
+}
+
+.goal {
+  background-color: #aeae70;
+  padding: 4px;
+  width:100%;
+  margin: 4px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  font-family: body;
+}
+
+.goal-number {
+  align-self: flex-end;
+  margin-bottom: -6px;
+  margin-top: -3px;
+}
+
+.goal-point {
+  font-size: 2.5em;
+  margin: -16px;
+  text-align: center;
+}
+
+.strikes {
+  grid-area: strikes;
+  align-self: end;
+  justify-self: end;
+}

@@ -67,9 +67,9 @@ export class SocketioService {
     this.socket.emit('undo-strike', roomName, neighborhoodName);
   }
 
-  goalAccomplished(roomName: string, index: number) {
+  goalAccomplished(neighborhoodName: string, roomName: string, index: number, pointValue: number) {
     console.log(`got goal ${roomName}, ${index}`);
-    this.socket.emit('goal-accomplished', roomName, index);
+    this.socket.emit('goal-accomplished', neighborhoodName, roomName, index, pointValue);
   }
 
   leaveGame(neighborhoodName: string) {

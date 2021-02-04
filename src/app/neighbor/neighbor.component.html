@@ -1,9 +1,15 @@
-<div class="parent">
-  <div class="header">
+<div class="grid-container">
+  <div class="name">
     <h3>{{neighbor.name}}</h3>
+  </div>
+  <div class="ready-light">
     <div [ngClass]="{ 'light': true, 'green-light-on': neighbor.ready, 'green-light-off': !neighbor.ready }"></div>
   </div>
-
+  <div class="goals">
+    <div class="goal"><div class="goal-number">1</div><div class="goal-point">{{neighbor.goalPoints[0]}}</div></div>
+    <div class="goal"><div class="goal-number">2</div><div class="goal-point">{{neighbor.goalPoints[1]}}</div></div>
+    <div class="goal"><div class="goal-number">3</div><div class="goal-point">{{neighbor.goalPoints[2]}}</div></div>
+  </div>
   <div class="strikes">
     <div *ngFor="let strike of getStrikes()" class="small-light red-light-on"></div>
     <div *ngFor="let strike of getEmptyStrikes()" class="small-light red-light-off"></div>

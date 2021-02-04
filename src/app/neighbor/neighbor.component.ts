@@ -4,7 +4,7 @@ import { Neighbor } from '../neighbor';
 @Component({
   selector: 'app-neighbor',
   templateUrl: './neighbor.component.html',
-  styleUrls: ['./neighbor.component.css']
+  styleUrls: ['./neighbor-grid.component.css']
 })
 export class NeighborComponent implements OnInit {
 

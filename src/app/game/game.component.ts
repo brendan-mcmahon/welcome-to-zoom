@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GameCard } from '../game-card/game-card.model';
 import { faCheck, faRedo } from '@fortawesome/free-solid-svg-icons';
-import { GameService } from '../game.service';
 import { SocketioService } from '../socketio.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Neighbor } from '../neighbor';
 import { Table } from '../table';
-import { Howl, Howler } from 'howler';
+import { Howl } from 'howler';
 
 @Component({
   selector: 'app-game',
@@ -27,8 +26,6 @@ export class GameComponent implements OnInit, OnDestroy {
   neighbors: Neighbor[];
 
   constructor (
-    private gameService: GameService,
-    private route: ActivatedRoute,
     private socketService: SocketioService,
     private router: Router) { }
 
@@ -85,7 +82,18 @@ export class GameComponent implements OnInit, OnDestroy {
 
   goalAccomplished(index: number) {
     this.accomplishedGoals[index] = true;
-    this.socketService.goalAccomplished(this.gameCode, index);
+    let pointValue;
+    switch (this.table.goals[index].progress) {
+      case 'f':
+        pointValue = this.table.goals[index].first;
+        break;
+      case 'b':
+        pointValue = this.table.goals[index].second;
+        break;
+      default:
+        return;
+    }
+    this.socketService.goalAccomplished(this.neighborhoodName, this.gameCode, index, pointValue);
   }
 
   strike() {
@@ -129,8 +137,9 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   getGoalCardPath(row: number) {
-    if (!this.table.goals || !this.table.goals[row]) { return 'assets/icons/QuestionMark.png'; }
+    if (!this.table.goals || !this.table.goals[row]) { return 'assets/icons/QuestionMark.png';}
     if (this.table.goals[row].progress === 'x') { return 'assets/icons/red-x.png'; }
     return `assets/goal-cards/${row + 1}-${this.table.goals[row].index}${this.table.goals[row].progress}.png`;
+
   }
 }
